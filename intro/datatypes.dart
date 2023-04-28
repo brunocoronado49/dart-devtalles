@@ -73,7 +73,30 @@ main() {
   */
 
   //====== maps
-  Map<String, int> edades = {"Bruce": 30};
+  Map<String, int> edades = {'Bruce': 30, 'Maria': 23, 'Jose': 10, 'Nico': 7};
 
+  Map<String, dynamic> francisco = {
+    'nombre': 'Francisco',
+    'edad': 25,
+    'signo': 'libra',
+    'dinero': 209.43,
+    'isSingle': true
+  };
+
+  Map<int, int> items = {1: 1, 2: 2, 3: 3, 4: 4, 5: 5};
+
+  Map<String, dynamic> captain = new Map();
+  captain.addAll({
+    'nombre': 'Carol',
+    'edad': 40,
+    'poder': 'poderes cosmicos',
+    'ciudad': 'california'
+  });
+
+  /*
   print(edades);
+  print(francisco);
+  print(francisco['nombre']);
+  print(items[3]);
+  */
 }

@@ -1,6 +1,33 @@
 import 'dart:io';
 
 main() {
+  procesarUsuario(1);
+  procesarUsuario(2);
+}
+
+/// funcion para imprimir los mensajes
+void imprimirMensaje(String mensaje) => stdout.writeln(mensaje);
+
+/// funcion para escribir en consola
+String leerMensaje() => stdin.readLineSync() ?? 'Mongolito';
+
+/// funcion para calcular salario neto
+Map<String, dynamic> calcularSalarioNeto(double salario) {
+  double deduccion = salario * 0.15;
+  double salarioNeto = salario - deduccion;
+
+  Map<String, dynamic> salarioUsuario = {
+    'salario': salario,
+    'deduccion': deduccion,
+    'salarioNeto': salarioNeto
+  };
+
+  return salarioUsuario;
+}
+
+/// Creamos la logica del usuairo
+void procesarUsuario(int numeroUsuario) {
+  imprimirMensaje('=========== Usuario: $numeroUsuario ============');
   imprimirMensaje('Dime tu nombre: ');
   String nombre = leerMensaje();
 
@@ -16,36 +43,16 @@ main() {
     'pais': pais
   };
 
-  imprimirMensaje('Usuario sin deducciones');
-  imprimirMensaje(usuario);
+  imprimirMensaje('Dime tu salario bruto: ');
+  String salario = leerMensaje();
+  double nuevoSalario = double.parse(salario);
 
-  Map<String, dynamic> usuarioNeto = calcularSalarioNeto(1200.4);
+  imprimirMensaje('Usuario sin deducciones');
+  imprimirMensaje(usuario.toString());
+
+  Map<String, dynamic> usuarioNeto = calcularSalarioNeto(nuevoSalario);
   usuario.addAll(usuarioNeto);
 
   imprimirMensaje('Usuario con deducciones');
-  imprimirMensaje(usuario);
-}
-
-/// funcion para imprimir los mensajes
-void imprimirMensaje(dynamic mensaje) {
-  stdout.writeln(mensaje);
-}
-
-/// funcion para escribir en consola
-String leerMensaje() {
-  return stdin.readLineSync() ?? 'Mongolito';
-}
-
-/// funcion para calcular salario neto
-Map<String, dynamic> calcularSalarioNeto(double salario) {
-  double deduccion = salario * 0.15;
-  double salarioNeto = salario - deduccion;
-
-  Map<String, dynamic> salarioUsuario = {
-    'salario': salario,
-    'deduccion': deduccion,
-    'salarioNeto': salarioNeto
-  };
-
-  return salarioUsuario;
+  imprimirMensaje(usuario.toString());
 }

@@ -1,8 +1,8 @@
 import 'dart:io';
 
 main() {
-  procesarUsuario(1);
-  procesarUsuario(2);
+  List<int> listaUsuarios = [1, 2, 3, 4, 5];
+  listadoUsuarios(listaUsuarios);
 }
 
 /// funcion para imprimir los mensajes
@@ -13,7 +13,7 @@ String leerMensaje() => stdin.readLineSync() ?? 'Mongolito';
 
 /// funcion para calcular salario neto
 Map<String, dynamic> calcularSalarioNeto(double salario) {
-  double deduccion = salario * 0.15;
+  double deduccion = salario * 0.16;
   double salarioNeto = salario - deduccion;
 
   Map<String, dynamic> salarioUsuario = {
@@ -55,4 +55,11 @@ void procesarUsuario(int numeroUsuario) {
 
   imprimirMensaje('Usuario con deducciones');
   imprimirMensaje(usuario.toString());
+}
+
+/// funcion que inserta usuarios
+void listadoUsuarios(List<int> listaUsuarios) {
+  for (int noUsuario in listaUsuarios) {
+    procesarUsuario(noUsuario);
+  }
 }
